@@ -1,0 +1,5 @@
+FROM gradle:8.7.0-jdk21
+WORKDIR /app
+COPY . .
+RUN gradle build
+CMD ["java", "-jar", "build/libs/{{ENTRY}}.jar"]

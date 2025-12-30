@@ -1,0 +1,7 @@
+FROM elixir:1.18.4
+WORKDIR /app
+COPY . .
+RUN mix local.hex --force && \
+    mix deps.get && \
+    mix compile
+CMD ["elixir", "{{ENTRY}}"]

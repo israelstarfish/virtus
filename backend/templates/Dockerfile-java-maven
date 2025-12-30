@@ -1,0 +1,11 @@
+FROM eclipse-temurin:11-jdk
+WORKDIR /app
+COPY . .
+RUN mvn package
+CMD ["java", "-jar", "$(ls target/*.jar | head -1)"]
+
+#FROM maven:3.9.4-eclipse-temurin-21
+#WORKDIR /app
+#COPY . .
+#RUN mvn package
+#CMD ["java", "-jar", "target/{{ENTRY}}.jar"]

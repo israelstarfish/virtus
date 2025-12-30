@@ -1,0 +1,23 @@
+# Etapa 1: Build
+FROM node:22.18.0 AS builder
+WORKDIR /app
+
+# Copia os arquivos e instala dependências
+COPY . .
+RUN npm install
+RUN npm run build
+
+# Etapa 2: Produção
+FROM node:22.18.0 AS production
+WORKDIR /app
+
+# Copia apenas os arquivos necessários para produção
+COPY --from=builder /app/.output ./.output
+COPY --from=builder /app/node_modules ./node_modules
+COPY --from=builder /app/package.json ./package.json
+
+# Expõe a porta padrão do Nuxt
+EXPOSE 3000
+
+# Comando para iniciar o servidor Nuxt
+CMD ["node", ".output/server/index.mjs"]

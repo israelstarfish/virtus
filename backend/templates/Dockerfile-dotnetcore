@@ -1,0 +1,23 @@
+# Etapa 1: Build da aplicação
+FROM mcr.microsoft.com/dotnet/sdk:8.0 AS build
+WORKDIR /src
+
+# Copia os arquivos do projeto
+COPY . .
+
+# Restaura dependências e publica o projeto
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app/publish
+
+# Etapa 2: Imagem leve para produção
+FROM mcr.microsoft.com/dotnet/aspnet:8.0 AS runtime
+WORKDIR /app
+
+# Copia os arquivos publicados
+COPY --from=build /app/publish .
+
+# Expõe a porta padrão do ASP.NET Core
+EXPOSE 8080
+
+# Comando para iniciar a aplicação
+CMD ["dotnet", "{{ENTRY}}.dll"]

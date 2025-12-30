@@ -1,0 +1,5 @@
+FROM eclipse-temurin:11-jdk
+WORKDIR /app
+COPY . .
+RUN gradle build
+CMD ["java", "-jar", "$(ls build/libs/*.jar | head -1)"]

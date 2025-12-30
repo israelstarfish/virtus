@@ -1,0 +1,17 @@
+# Usando a imagem base do Python 3.13
+FROM python:3.13.3-slim
+
+# Define o diretório de trabalho no contêiner
+WORKDIR /app
+
+# Copia todos os arquivos do projeto para o contêiner
+COPY . .
+
+# Instala as dependências em uma pasta específica dentro do contêiner
+RUN pip install --target=/app/dependencies -r requirements.txt
+
+# Adiciona as dependências no caminho do PYTHONPATH
+ENV PYTHONPATH=/app/dependencies:$PYTHONPATH
+
+# Define o comando de inicialização (substitua {{ENTRY}} com o nome real do script)
+CMD ["python", "{{ENTRY}}"]
