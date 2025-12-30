@@ -1,0 +1,71 @@
+// src/app/[lang]/test/page.jsx
+
+"use client";
+
+import { useState } from "react";
+import UpgradeButton from "@/components/buttons/UpgradeButton";
+import UpgradeModal from "@/components/UpgradeModal";
+
+export default function TestButtonsPage() {
+  const [showModal, setShowModal] = useState(false);
+
+  return (
+    <main className="min-h-screen bg-gray-100 p-10">
+      <h1 className="text-2xl font-bold mb-6">🧪 Galeria de Botões</h1>
+
+      <UpgradeButton onClick={() => setShowModal(true)} />
+
+      {showModal && <UpgradeModal onClose={() => setShowModal(false)} />}
+    </main>
+  );
+}
+
+//export default function TestPage() {
+//  return (
+//    <div className="min-h-screen w-full max-w-md px-4 bg-gray-900 p-6 rounded-lg shadow-lg text-center space-y-4 animate-fade-in">
+//      <h1 className="text-2xl font-bold text-white">Centralizado!</h1>
+//      <p className="text-sm text-gray-400">
+//        Esta página está centralizada no meio da tela, com fundo escuro e layout responsivo.
+//      </p>
+//      <button className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition">
+//        Ação de exemplo
+//      </button>
+//    </div>
+//  );
+//}
+
+//export default function TestPage() {
+//  return (
+//    <div className="flex items-center justify-center min-h-screen w-full">
+//      <div className="bg-gray-900 p-6 rounded-lg shadow-lg text-center space-y-4 animate-fade-in w-full max-w-md">
+//        <h1 className="text-2xl font-bold text-white">Centralizado!</h1>
+//        <p className="text-sm text-gray-400">
+//          Esta página está centralizada no meio da tela, com fundo escuro e layout responsivo.
+//        </p>
+//        <button className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition">
+//          Ação de exemplo
+//        </button>
+//      </div>
+//    </div>
+//  );
+//}
+
+//export default function TestPage() {
+//  return (
+//    <div className="bg-gray-900 p-6 rounded-lg shadow-lg text-center space-y-4 animate-fade-in">
+//      <h1 className="text-2xl font-bold text-white">Centralizado!</h1>
+//      <p className="text-sm text-gray-400">
+//        Esta página está centralizada no meio da tela, com fundo escuro e layout responsivo.
+//      </p>
+//      <button className="mt-4 px-4 py-2 bg-blue-600 hover:bg-blue-700 text-white rounded transition">
+//        Ação de exemplo
+//      </button>
+//    </div>
+//  );
+//}
+
+//import UploadFormTest from "@/components/UploadFormTest";
+//
+//export default function Page() {
+//  return <UploadFormTest />;
+//}

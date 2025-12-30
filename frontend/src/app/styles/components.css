@@ -1,0 +1,7 @@
+/* Component.module.css */
+.container {
+  display: flex;
+  justify-content: center; /* Centraliza horizontalmente */
+  align-items: center;    /* Centraliza verticalmente */
+  height: 100vh;          /* Exemplo: para ocupar a tela inteira */
+}

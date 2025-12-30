@@ -1,0 +1,905 @@
+//frontend/src/app/[lang]/page.jsx -> Home Page
+
+'use client';
+
+import { useEffect, useState } from 'react';
+import { usePathname, useRouter } from 'next/navigation';
+import { messages } from '@/app/[lang]/messages/home/section1';
+import Section1 from '@/components/sections/home/section1';
+import Section2 from '@/components/sections/home/section2';
+import Section3 from '@/components/sections/home/section3';
+import Section4 from '@/components/sections/home/section4';
+import Section5 from '@/components/sections/home/section5';
+import Section6 from '@/components/sections/home/section6';
+import Section7 from '@/components/sections/home/section7';
+import Header from '@/components/Recycles/Header';
+import Footer from '@/components/Recycles/Footer';
+import '../styles/virtus.css';
+
+function getLangFromPath(pathname) {
+    const segment = pathname?.split('/')[1]?.toLowerCase() || '';
+    const supported = Object.keys(messages);
+    return supported.includes(segment) ? segment : 'pt-br';
+}
+
+export default function HomePage() {
+    const pathname = usePathname();
+    const router = useRouter();
+    const lang = getLangFromPath(pathname);
+    //const dict = messages[lang];
+    
+
+    const [username, setUsername] = useState(null);
+
+    useEffect(() => {
+        const checkSession = async () => {
+            try {
+                const res = await fetch('/api/verify-token', { method: 'GET', credentials: 'include' });
+                const data = await res.json();
+
+                if (data?.username) {
+                    setUsername(data.username);
+                }
+            } catch {
+                // Sessão inválida ou erro de rede — ignora
+            }
+        };
+
+        checkSession();
+    }, []);
+
+    return (
+        <>
+            <div className="flex min-h-screen flex-col">
+                <Header />
+                <main className="w-full bg-background ">
+
+                    {/* Seção 1: Hero */}
+                    <Section1 lang={lang} username={username} />
+
+                    {/* Seção 2: Tecnologias suportadas */}
+                    <Section2 lang={lang} username={username} />
+
+                    {/* Seção 3: Bots e recursos */}
+                    <Section3 lang={lang} username={username} />
+                    {/* Seção 4: Hospedagem de Sites */}
+                    <Section4 lang={lang} username={username} />
+                    {/* Seção 5: Armazenamento de Blobs */}
+                    <Section5 lang={lang} username={username} />
+                    {/* Seção 6: Recursos da plataforma  */}
+                    <Section6 lang={lang} username={username} />
+                    {/* Seção 7: Infraestrutura empresarial */}
+                    <Section7 lang={lang} username={username} />
+                    {/* Seção 8: Sessão extra com CEO */}
+
+                    <Footer username={username} />
+                </main>
+            </div>
+        </>
+    );
+}
+
+//frontend/src/app/[lang]/page.jsx -> Home Page
+
+//'use client';
+//
+//import { useEffect, useState } from 'react';
+//import { usePathname, useRouter } from 'next/navigation';
+//import Section1 from '@/components/sections/section1';
+//import Section2 from '@/components/sections/section2';
+//import Section3 from '@/components/sections/section3';
+//import Section4 from '@/components/sections/section4';
+//import Section5 from '@/components/sections/section5';
+//import Section6 from '@/components/sections/section6';
+//import Section7 from '@/components/sections/section7';
+//import Header from '@/components/Recycles/Header';
+//import Footer from '@/components/Recycles/Footer';
+//import '../styles/virtus.css';
+//import { PlanOrDashboardButton } from '@/components/PlanOrDashboardButton';
+//
+////import Link from 'next/link';
+//
+//const messages = {
+//    'pt-br': {
+//        slogan: 'sua plataforma completa',
+//        description:
+//            'Potencialize sua presença online com o poder da Virtus Cloud, sua hospedagem definitiva para bots e sites! Transforme seu sonho em realidade com segurança, privacidade e suporte premium excepcional.',
+//        plans: 'Confira nossos planos',
+//        dashboard: 'Ir para o painel',
+//        about: 'Saiba mais',
+//    },
+//    en: {
+//        slogan: 'your complete platform',
+//        description:
+//            'Boost your online presence with the power of Virtus Cloud, your ultimate hosting solution for bots and websites! Make your dream come true with security, privacy, and exceptional premium support.',
+//        plans: 'View our plans',
+//        dashboard: 'Go to dashboard',
+//        about: 'Learn more',
+//    },
+//    es: {
+//        slogan: 'tu plataforma completa',
+//        description:
+//            'Impulsa tu presencia online con el poder de Virtus Cloud, tu solución definitiva de alojamiento para bots y sitios web. Haz realidad tu sueño con seguridad, privacidad y soporte premium excepcional.',
+//        plans: 'Consulta nuestros planes',
+//        dashboard: 'Ir al panel',
+//        about: 'Saber más',
+//    },
+//    zh: {
+//        slogan: '您的完整平台',
+//        description:
+//            '通过 Virtus Cloud 提升您的线上影响力，这是针对网站与机器人的终极托管方案。享受卓越支持、隐私保护与安全性能，助您梦想成真。',
+//        plans: '查看方案',
+//        dashboard: '进入面板',
+//        about: '了解更多',
+//    },
+//};
+//
+//function getLangFromPath(pathname) {
+//    const segment = pathname?.split('/')[1]?.toLowerCase() || '';
+//    const supported = Object.keys(messages);
+//    return supported.includes(segment) ? segment : 'pt-br';
+//}
+//
+//export default function HomePage() {
+//    const pathname = usePathname();
+//    const router = useRouter();
+//    const lang = getLangFromPath(pathname);
+//    const dict = messages[lang];
+//
+//    const [username, setUsername] = useState(null);
+//
+//    useEffect(() => {
+//        const checkSession = async () => {
+//            try {
+//                const res = await fetch('/api/verify-token', { method: 'GET', credentials: 'include' });
+//                const data = await res.json();
+//
+//                if (data?.username) {
+//                    setUsername(data.username);
+//                }
+//            } catch {
+//                // Sessão inválida ou erro de rede — ignora
+//            }
+//        };
+//
+//        checkSession();
+//    }, []);
+//
+//    return (
+//        <>
+//            <div className="flex min-h-screen flex-col">
+//                <Header />
+//                <main className="w-full bg-background ">
+//
+//                    {/* Seção 1: Hero */}
+//                    <Section1 />
+//
+//                    {/* Seção 2: Tecnologias suportadas */}
+//                    <Section2 />
+//
+//                    {/* Seção 3: Bots e recursos */}
+//                    <Section3 />
+//                    {/* Seção 4: Hospedagem de Sites */}
+//                    <Section4 />
+//                    {/* Seção 5: Armazenamento de Blobs */}
+//                    <Section5 />
+//                    {/* Seção 6: Recursos da plataforma  */}
+//                    <Section6 />
+//                    {/* Seção 7: Infraestrutura empresarial */}
+//                    <Section7 />
+//                    {/* Seção 8: Sessão extra com CEO */}
+//
+//                    <Footer />
+//                </main>
+//            </div>
+//        </>
+//    );
+//}
+
+
+////frontend/src/app/[lang]/home/page.jsx -> Home Page
+//
+//'use client';
+//
+//import { useEffect, useState } from 'react';
+//import { usePathname, useRouter } from 'next/navigation';
+//import Section1 from '@/components/sections/section1';
+//import Section2 from '@/components/sections/section2';
+//import Section3 from '@/components/sections/section3';
+//import Section4 from '@/components/sections/section4';
+//import Section5 from '@/components/sections/section5';
+//import Section6 from '@/components/sections/section6';
+//import Section7 from '@/components/sections/section7';
+//import Header from '@/components/Recycles/Header';
+//import Footer from '@/components/Recycles/Footer';
+//import '../styles/virtus.css';
+//import { PlanOrDashboardButton } from '@/components/PlanOrDashboardButton';
+//
+////import Link from 'next/link';
+//
+//const messages = {
+//    'pt-br': {
+//        slogan: 'sua plataforma completa',
+//        description:
+//            'Potencialize sua presença online com o poder da Virtus Cloud, sua hospedagem definitiva para bots e sites! Transforme seu sonho em realidade com segurança, privacidade e suporte premium excepcional.',
+//        plans: 'Confira nossos planos',
+//        dashboard: 'Ir para o painel',
+//        about: 'Saiba mais',
+//    },
+//    en: {
+//        slogan: 'your complete platform',
+//        description:
+//            'Boost your online presence with the power of Virtus Cloud, your ultimate hosting solution for bots and websites! Make your dream come true with security, privacy, and exceptional premium support.',
+//        plans: 'View our plans',
+//        dashboard: 'Go to dashboard',
+//        about: 'Learn more',
+//    },
+//    es: {
+//        slogan: 'tu plataforma completa',
+//        description:
+//            'Impulsa tu presencia online con el poder de Virtus Cloud, tu solución definitiva de alojamiento para bots y sitios web. Haz realidad tu sueño con seguridad, privacidad y soporte premium excepcional.',
+//        plans: 'Consulta nuestros planes',
+//        dashboard: 'Ir al panel',
+//        about: 'Saber más',
+//    },
+//    zh: {
+//        slogan: '您的完整平台',
+//        description:
+//            '通过 Virtus Cloud 提升您的线上影响力，这是针对网站与机器人的终极托管方案。享受卓越支持、隐私保护与安全性能，助您梦想成真。',
+//        plans: '查看方案',
+//        dashboard: '进入面板',
+//        about: '了解更多',
+//    },
+//};
+//
+//function getLangFromPath(pathname) {
+//    const segment = pathname?.split('/')[1]?.toLowerCase() || '';
+//    const supported = Object.keys(messages);
+//    return supported.includes(segment) ? segment : 'pt-br';
+//}
+//
+//export default function HomePage() {
+//    const pathname = usePathname();
+//    const router = useRouter();
+//    const lang = getLangFromPath(pathname);
+//    const dict = messages[lang];
+//
+//    const [username, setUsername] = useState(null);
+//
+//    useEffect(() => {
+//        const checkSession = async () => {
+//            try {
+//                const res = await fetch('/api/verify-token', { method: 'GET', credentials: 'include' });
+//                const data = await res.json();
+//
+//                if (data?.username) {
+//                    setUsername(data.username);
+//                }
+//            } catch {
+//                // Sessão inválida ou erro de rede — ignora
+//            }
+//        };
+//
+//        checkSession();
+//    }, []);
+//
+//    return (
+//        <>
+//            <Header />
+//            <main className="w-full bg-background ">
+//
+//                {/* Seção 1: Hero */}
+//                <Section1 />
+//
+//                {/* Seção 2: Tecnologias suportadas */}
+//                <Section2 />
+//
+//                {/* Seção 3: Bots e recursos */}
+//                <Section3 />
+//                 {/* Seção 4: Não sei o que colocar aqui  */}
+//                <Section4 />
+//                 {/* Seção 5: Não sei o que colocar aqui */}
+//                <Section5 />
+//                {/* Seção 6: Não sei o que colocar aqui  */}
+//                <Section6 />
+//                {/* Seção 7: Não sei o que colocar aqui */}
+//                <Section7 />
+//
+//                <Footer />
+//            </main>
+//        </>
+//    );
+//}
+
+//frontend/src/app/[lang]/home/page.jsx -> Home Page
+
+//'use client';
+//
+//import { useEffect, useState } from 'react';
+//import { usePathname, useRouter } from 'next/navigation';
+//import Header from '@/components/Recycles/Header';
+//import Footer from '@/components/Recycles/Footer';
+//import '../styles/virtus.css';
+//import { PlanOrDashboardButton } from '@/components/PlanOrDashboardButton';
+////import Link from 'next/link';
+//
+//const messages = {
+//    'pt-br': {
+//        slogan: 'sua plataforma completa',
+//        description:
+//            'Potencialize sua presença online com o poder da Virtus Cloud, sua hospedagem definitiva para bots e sites! Transforme seu sonho em realidade com segurança, privacidade e suporte premium excepcional.',
+//        plans: 'Confira nossos planos',
+//        dashboard: 'Ir para o painel',
+//        about: 'Saiba mais',
+//    },
+//    en: {
+//        slogan: 'your complete platform',
+//        description:
+//            'Boost your online presence with the power of Virtus Cloud, your ultimate hosting solution for bots and websites! Make your dream come true with security, privacy, and exceptional premium support.',
+//        plans: 'View our plans',
+//        dashboard: 'Go to dashboard',
+//        about: 'Learn more',
+//    },
+//    es: {
+//        slogan: 'tu plataforma completa',
+//        description:
+//            'Impulsa tu presencia online con el poder de Virtus Cloud, tu solución definitiva de alojamiento para bots y sitios web. Haz realidad tu sueño con seguridad, privacidad y soporte premium excepcional.',
+//        plans: 'Consulta nuestros planes',
+//        dashboard: 'Ir al panel',
+//        about: 'Saber más',
+//    },
+//    zh: {
+//        slogan: '您的完整平台',
+//        description:
+//            '通过 Virtus Cloud 提升您的线上影响力，这是针对网站与机器人的终极托管方案。享受卓越支持、隐私保护与安全性能，助您梦想成真。',
+//        plans: '查看方案',
+//        dashboard: '进入面板',
+//        about: '了解更多',
+//    },
+//};
+//
+//function getLangFromPath(pathname) {
+//    const segment = pathname?.split('/')[1]?.toLowerCase() || '';
+//    const supported = Object.keys(messages);
+//    return supported.includes(segment) ? segment : 'pt-br';
+//}
+//
+//export default function HomePage() {
+//    const pathname = usePathname();
+//    const router = useRouter();
+//    const lang = getLangFromPath(pathname);
+//    const dict = messages[lang];
+//
+//    const [username, setUsername] = useState(null);
+//
+//    useEffect(() => {
+//        const checkSession = async () => {
+//            try {
+//                const res = await fetch('/api/verify-token', { method: 'GET', credentials: 'include' });
+//                const data = await res.json();
+//
+//                if (data?.username) {
+//                    setUsername(data.username);
+//                }
+//            } catch {
+//                // Sessão inválida ou erro de rede — ignora
+//            }
+//        };
+//
+//        checkSession();
+//    }, []);
+//
+//    return (
+//        <>
+//            <Header />
+//            <main className="w-full bg-background ">
+//
+//                {/* Seção 1: Hero */}
+//                <section
+//                    id="main"
+//                    className="relative h-[max(500px,calc(100dvh-80px))] max-h-225 overflow-hidden rounded-4xl bg-grid-virtus-600/[0.375] px-4 py-16 sm:mx-4 sm:px-6 sm:py-36"
+//                >
+//                    <div className="-mt-6 flex h-full select-none flex-col items-center justify-center text-center">
+//                        <div className="max-w-2xl lg:max-w-5xl">
+//                            <h1
+//                                translate="no"
+//                                className="font-extrabold text-5xl text-primary leading-snug tracking-tight max-sm:mt-4 sm:text-6xl md:text-8xl motion-opacity-in-0 motion-translate-y-in-[15%] motion-ease-spring-bouncier motion-delay-150"
+//                            >
+//                                Virtus Cloud
+//                            </h1>
+//                            <h2 className="bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-600 bg-clip-text font-extrabold text-4xl text-transparent tracking-tight sm:text-4xl md:text-6xl motion-opacity-in-0 motion-translate-y-in-[15%] motion-ease-spring-bouncier motion-delay-300">
+//                                sua plataforma completa
+//                            </h2>
+//                            <p className="my-6 font-medium text-base text-secondary sm:mx-auto lg:mx-0 motion-opacity-in-0 motion-translate-y-in-[15%] motion-ease-spring-bouncier motion-delay-450">
+//                                Potencialize sua presença online com o poder da Virtus Cloud, sua hospedagem definitiva para bots e sites! Transforme seu sonho em realidade com segurança, privacidade e suporte premium excepcional.
+//                            </p>
+//                        </div>
+//
+//                        <div className="grid justify-center gap-4 py-0.5 sm:grid-cols-2 motion-opacity-in-0 motion-translate-y-in-[15%] motion-ease-spring-bouncier motion-delay-600">
+//                            {/* Botão: Ir para o painel */}
+//                            <a
+//                                href="/pt-br/dashboard"
+//                                role="button"
+//                                className="group/button relative inline-flex min-w-fit shrink-0 items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-md font-medium text-primary text-sm outline-none transition-all hover:cursor-pointer disabled:pointer disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 focus:outline-hidden focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:border-ring focus-visible:ring-[3px] bg-blue-700 hover:bg-blue-800 focus-visible:ring-blue-700 h-10 px-4 group relative flex items-center"
+//                            >
+//                                <span className="mx-[13px] transition-all duration-400 group-hover:mx-0 group-hover:mr-[26px]">
+//                                    Ir para o painel
+//                                </span>
+//                                <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-0 transition-all duration-400 ease-in-out group-hover:right-4 group-hover:opacity-100">
+//                                    <svg
+//                                        xmlns="http://www.w3.org/2000/svg"
+//                                        width="18"
+//                                        height="18"
+//                                        fill="currentColor"
+//                                        viewBox="0 0 256 256"
+//                                        strokeWidth="1"
+//                                    >
+//                                        <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z" />
+//                                    </svg>
+//                                </div>
+//                            </a>
+//
+//                            {/* Botão: Saiba mais */}
+//                            <a
+//                                href="https://docs.virtuscloud.app/"
+//                                target="_blank"
+//                                role="button"
+//                                aria-label="Acessar a documentação"
+//                                className="group/button relative inline-flex min-w-fit shrink-0 items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-md font-medium text-primary text-sm outline-none transition-all hover:cursor-pointer disabled:pointer disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 focus:outline-hidden focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:border-ring focus-visible:ring-[3px] bg-background shadow-[0_0_0_1px] shadow-border hover:bg-virtus-600 focus-visible:ring-blue-700 h-10 px-4 group relative flex items-center"
+//                            >
+//                                <span className="mx-[13px] transition-all duration-400 group-hover:mx-0 group-hover:mr-[26px]">
+//                                    Saiba mais
+//                                </span>
+//                                <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-0 transition-all duration-400 ease-in-out group-hover:right-4 group-hover:opacity-100">
+//                                    <svg
+//                                        xmlns="http://www.w3.org/2000/svg"
+//                                        width="18"
+//                                        height="18"
+//                                        fill="currentColor"
+//                                        viewBox="0 0 256 256"
+//                                        strokeWidth="1"
+//                                    >
+//                                        <path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z" />
+//                                    </svg>
+//                                </div>
+//                            </a>
+//                        </div>
+//                    </div>
+//                </section>
+//
+//                {/* Seção 2: Tecnologias suportadas */}
+//                <section className="bg-virtus-900">
+//                    <div className="container flex flex-col items-center justify-center px-4 py-12 sm:px-6">
+//                        <div className="mb-6 flex flex-col items-center justify-center text-center">
+//                            <h2 className="font-bold text-4xl lg:tracking-tight">
+//                                Apoie seu desenvolvimento com flexibilidade e potência
+//                            </h2>
+//                            <p className="mt-4 max-w-3xl text-base text-secondary">
+//                                Com suporte para as principais tecnologias, como Java, JavaScript, PHP, Elixir, Ruby on Rails e muito mais, nossa hospedagem garante a compatibilidade e a performance que você precisa para criar projetos incríveis.
+//                            </p>
+//                        </div>
+//
+//                        <div className="flex max-w-4xl flex-wrap items-center justify-center gap-2.5">
+//                            {[
+//                                "python", "typescript", "javascript", "go", "java", "csharp", "rust", "php",
+//                                "kotlin", "elixir", "dotnetcore", "spring", "react", "nextjs", "vuejs",
+//                                "angularjs", "nestjs", "laravel", "django"
+//                            ].map((lang) => (
+//                                <div
+//                                    key={lang}
+//                                    className="flex h-18 w-18 flex-col items-center justify-center gap-2 rounded-xl border border-border px-2 py-4"
+//                                >
+//                                    <div className="block rounded-md duration-300 hover:opacity-100">
+//                                        <img
+//                                            alt={`${lang} Icon`}
+//                                            loading="lazy"
+//                                            width={32}
+//                                            height={32}
+//                                            decoding="async"
+//                                            className="rounded-md"
+//                                            style={{ color: "transparent" }}
+//                                            src={`/assets/languages/${lang}.svg`}
+//                                        />
+//                                    </div>
+//                                </div>
+//                            ))}
+//                        </div>
+//
+//                        <span className="mt-6 text-center font-bold text-base text-secondary uppercase">
+//                            Confiado por milhares de desenvolvedores
+//                        </span>
+//                    </div>
+//                </section>
+//
+//                {/* Seção 3: Bots e recursos */}
+//                <section className="container relative my-24 px-4 sm:my-48 sm:px-6">
+//                    <div className="flex justify-between">
+//                        {/* Texto à esquerda */}
+//                        <div className="flex flex-col gap-4">
+//                            <div className="flex items-center gap-3">
+//                                <div className="flex items-center gap-2 text-blue-500">
+//                                    <img
+//                                        alt="Virtus Cloud Logo"
+//                                        loading="lazy"
+//                                        width={16}
+//                                        height={16}
+//                                        decoding="async"
+//                                        style={{ color: "transparent" }}
+//                                        src="/assets/logo.svg"
+//                                    />
+//                                    <span className="font-medium">Bots</span>
+//                                </div>
+//                                <span className="text-virtus-400 text-xs">|</span>
+//                                <span className="font-normal text-blue-500">Virtus Cloud</span>
+//                            </div>
+//
+//                            <div className="space-y-1">
+//                                <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-tight">
+//                                    Hospede seu <span className="text-blue-500">WhatsApp</span> bot.
+//                                </h2>
+//                                <h2 className="max-w-lg text-secondary">
+//                                    Eleve sua hospedagem de bots com a plataforma líder da América Latina. Nossa solução garante desempenho e confiabilidade inigualáveis, proporcionando hospedagem sem esforço e de alta qualidade para todas as suas necessidades de bots. Escolha-nos para obter o melhor em hospedagem de bots de ponta.
+//                                </h2>
+//                            </div>
+//
+//                            {/* Botão */}
+//                            <a
+//                                href="/pt-br/bots"
+//                                className="group/button relative inline-flex min-w-fit items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-md font-medium text-primary text-sm outline-none transition-all hover:cursor-pointer disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 bg-background shadow-[0_0_0_1px] shadow-border hover:bg-virtus-600 focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:ring-blue-700 h-10 px-4"
+//                                role="button"
+//                            >
+//                                <span className="mx-[13px] transition-all duration-400 group-hover:mx-0 group-hover:mr-[26px]">
+//                                    Explore mais
+//                                </span>
+//                                <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-0 transition-all duration-400 ease-in-out group-hover:right-4 group-hover:opacity-100">
+//                                    <svg
+//                                        xmlns="http://www.w3.org/2000/svg"
+//                                        width="18"
+//                                        height="18"
+//                                        fill="currentColor"
+//                                        viewBox="0 0 256 256"
+//                                        strokeWidth="1"
+//                                    >
+//                                        <path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z" />
+//                                    </svg>
+//                                </div>
+//                            </a>
+//
+//                            {/* Benefícios */}
+//                            <div className="mt-6 flex flex-col gap-4 md:flex-row">
+//                                <div className="flex-1 space-y-2 rounded-md border border-virtus-700 p-4 md:max-w-60">
+//                                    <svg
+//                                        xmlns="http://www.w3.org/2000/svg"
+//                                        width="24"
+//                                        height="24"
+//                                        fill="currentColor"
+//                                        viewBox="0 0 256 256"
+//                                        className="text-blue-500"
+//                                    >
+//                                        <path d="M101.85,191.14C97.34,201,82.29,224,40,224a8,8,0,0,1-8-8c0-42.29,23-57.34,32.86-61.85a8,8,0,0,1,6.64,14.56c-6.43,2.93-20.62,12.36-23.12,38.91,26.55-2.5,36-16.69,38.91-23.12a8,8,0,1,1,14.56,6.64Zm122-144a16,16,0,0,0-15-15c-12.58-.75-44.73.4-71.4,27.07h0L88,108.7A8,8,0,0,1,76.67,97.39l26.56-26.57A4,4,0,0,0,100.41,64H74.35A15.9,15.9,0,0,0,63,68.68L28.7,103a16,16,0,0,0,9.07,27.16l38.47,5.37,44.21,44.21,5.37,38.49a15.94,15.94,0,0,0,10.78,12.92,16.11,16.11,0,0,0,5.1.83A15.91,15.91,0,0,0,153,227.3L187.32,193A16,16,0,0,0,192,181.65V155.59a4,4,0,0,0-6.83-2.82l-26.57,26.56a8,8,0,0,1-11.71-.42,8.2,8.2,0,0,1,.6-11.1l49.27-49.27h0C223.45,91.86,224.6,59.71,223.85,47.12Z" />
+//                                    </svg>
+//                                    <div>
+//                                        <h2 className="font-semibold">Dinâmico</h2>
+//                                        <span className="text-secondary text-sm">
+//                                            Oferecemos um serviço de hospedagem de bots dinâmico e inteligente com uma ampla variedade de endereços IP públicos para garantir a operação ininterrupta do bot.
+//                                        </span>
+//                                    </div>
+//                                </div>
+//
+//                                <div className="flex-1 space-y-2 rounded-md border border-virtus-700 p-4 md:max-w-60">
+//                                    <svg
+//                                        xmlns="http://www.w3.org/2000/svg"
+//                                        width="24"
+//                                        height="24"
+//                                        fill="currentColor"
+//                                        viewBox="0 0 256 256"
+//                                        className="text-blue-500"
+//                                    >
+//                                        <path d="M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm45.66,61.66-40,40a8,8,0,0,1-11.32-11.32l40-40a8,8,0,0,1,11.32,11.32ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z" />
+//                                    </svg>
+//                                    <div>
+//                                        <h2 className="font-semibold">24/7 Uptime</h2>
+//                                        <span className="text-secondary text-sm">
+//                                            Reinicie automaticamente seu projeto se ele ficar off-line devido a erros de código, graças à nossa tecnologia exclusiva de reinicialização automática.
+//                                        </span>
+//                                    </div>
+//                                </div>
+//                            </div>
+//                        </div>
+//
+//                        {/* Imagem ilustrativa */}
+//                        <div className="hidden items-center lg:flex">
+//                            <img
+//                                alt="Bots"
+//                                loading="lazy"
+//                                width={400}
+//                                height={400}
+//                                decoding="async"
+//                                style={{ color: "transparent" }}
+//                                src="/undraw/services/bots.svg"
+//                            />
+//                        </div>
+//                    </div>
+//                </section>
+//                <Footer />
+//            </main>
+//        </>
+//    );
+//}
+//
+
+//frontend/src/app/[lang]/home/page.jsx -> Home Page
+
+//'use client';
+//
+//import { useEffect, useState } from 'react';
+//import { usePathname, useRouter } from 'next/navigation';
+//import Header from '@/components/Recycles/Header';
+//import Footer from '@/components/Recycles/Footer';
+//import '../styles/virtus.css';
+//import { PlanOrDashboardButton } from '@/components/PlanOrDashboardButton';
+////import Link from 'next/link';
+//
+//const messages = {
+//    'pt-br': {
+//        slogan: 'sua plataforma completa',
+//        description:
+//            'Potencialize sua presença online com o poder da Virtus Cloud, sua hospedagem definitiva para bots e sites! Transforme seu sonho em realidade com segurança, privacidade e suporte premium excepcional.',
+//        plans: 'Confira nossos planos',
+//        dashboard: 'Ir para o painel',
+//        about: 'Saiba mais',
+//    },
+//    en: {
+//        slogan: 'your complete platform',
+//        description:
+//            'Boost your online presence with the power of Virtus Cloud, your ultimate hosting solution for bots and websites! Make your dream come true with security, privacy, and exceptional premium support.',
+//        plans: 'View our plans',
+//        dashboard: 'Go to dashboard',
+//        about: 'Learn more',
+//    },
+//    es: {
+//        slogan: 'tu plataforma completa',
+//        description:
+//            'Impulsa tu presencia online con el poder de Virtus Cloud, tu solución definitiva de alojamiento para bots y sitios web. Haz realidad tu sueño con seguridad, privacidad y soporte premium excepcional.',
+//        plans: 'Consulta nuestros planes',
+//        dashboard: 'Ir al panel',
+//        about: 'Saber más',
+//    },
+//    zh: {
+//        slogan: '您的完整平台',
+//        description:
+//            '通过 Virtus Cloud 提升您的线上影响力，这是针对网站与机器人的终极托管方案。享受卓越支持、隐私保护与安全性能，助您梦想成真。',
+//        plans: '查看方案',
+//        dashboard: '进入面板',
+//        about: '了解更多',
+//    },
+//};
+//
+//function getLangFromPath(pathname) {
+//    const segment = pathname?.split('/')[1]?.toLowerCase() || '';
+//    const supported = Object.keys(messages);
+//    return supported.includes(segment) ? segment : 'pt-br';
+//}
+//
+//export default function HomePage() {
+//    const pathname = usePathname();
+//    const router = useRouter();
+//    const lang = getLangFromPath(pathname);
+//    const dict = messages[lang];
+//
+//    const [username, setUsername] = useState(null);
+//
+//    useEffect(() => {
+//        const checkSession = async () => {
+//            try {
+//                const res = await fetch('/api/verify-token', { method: 'GET', credentials: 'include' });
+//                const data = await res.json();
+//
+//                if (data?.username) {
+//                    setUsername(data.username);
+//                }
+//            } catch {
+//                // Sessão inválida ou erro de rede — ignora
+//            }
+//        };
+//
+//        checkSession();
+//    }, []);
+//
+//    return (
+//        <>
+//            <Header />
+//            <main className="w-full bg-background ">
+//
+//                {/* Seção 1: Hero */}
+//                <section
+//                    id="main"
+//                    className="relative h-[max(500px,calc(100dvh-80px))] max-h-225 overflow-hidden rounded-4xl bg-grid-virtus-600/[0.375] px-4 py-16 sm:mx-4 sm:px-6 sm:py-36"
+//                >
+//                    <div className="-mt-6 flex h-full select-none flex-col items-center justify-center text-center">
+//                        <div className="max-w-2xl lg:max-w-5xl">
+//                            <h1
+//                                translate="no"
+//                                className="font-extrabold text-5xl text-primary leading-snug tracking-tight max-sm:mt-4 sm:text-6xl md:text-8xl motion-opacity-in-0 motion-translate-y-in-[15%] motion-ease-spring-bouncier motion-delay-150"
+//                            >
+//                                Virtus Cloud
+//                            </h1>
+//                            <h2 className="bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-600 bg-clip-text font-extrabold text-4xl text-transparent tracking-tight sm:text-4xl md:text-6xl motion-opacity-in-0 motion-translate-y-in-[15%] motion-ease-spring-bouncier motion-delay-300">
+//                                sua plataforma completa
+//                            </h2>
+//                            <p className="my-6 font-medium text-base text-secondary sm:mx-auto lg:mx-0 motion-opacity-in-0 motion-translate-y-in-[15%] motion-ease-spring-bouncier motion-delay-450">
+//                                Potencialize sua presença online com o poder da Virtus Cloud, sua hospedagem definitiva para bots e sites! Transforme seu sonho em realidade com segurança, privacidade e suporte premium excepcional.
+//                            </p>
+//                        </div>
+//
+//                        <div className="grid justify-center gap-4 py-0.5 sm:grid-cols-2 motion-opacity-in-0 motion-translate-y-in-[15%] motion-ease-spring-bouncier motion-delay-600">
+//                            {/* Botão: Ir para o painel */}
+//                            <a
+//                                href="/pt-br/dashboard"
+//                                role="button"
+//                                className="group/button relative inline-flex min-w-fit shrink-0 items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-md font-medium text-primary text-sm outline-none transition-all hover:cursor-pointer disabled:pointer disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 focus:outline-hidden focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:border-ring focus-visible:ring-[3px] bg-blue-700 hover:bg-blue-800 focus-visible:ring-blue-700 h-10 px-4 group relative flex items-center"
+//                            >
+//                                <span className="mx-[13px] transition-all duration-400 group-hover:mx-0 group-hover:mr-[26px]">
+//                                    Ir para o painel
+//                                </span>
+//                                <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-0 transition-all duration-400 ease-in-out group-hover:right-4 group-hover:opacity-100">
+//                                    <svg
+//                                        xmlns="http://www.w3.org/2000/svg"
+//                                        width="18"
+//                                        height="18"
+//                                        fill="currentColor"
+//                                        viewBox="0 0 256 256"
+//                                        strokeWidth="1"
+//                                    >
+//                                        <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z" />
+//                                    </svg>
+//                                </div>
+//                            </a>
+//
+//                            {/* Botão: Saiba mais */}
+//                            <a
+//                                href="https://docs.virtuscloud.app/"
+//                                target="_blank"
+//                                role="button"
+//                                aria-label="Acessar a documentação"
+//                                className="group/button relative inline-flex min-w-fit shrink-0 items-center justify-center gap-2 overflow-hidden whitespace-nowrap rounded-md font-medium text-primary text-sm outline-none transition-all hover:cursor-pointer disabled:pointer disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 focus:outline-hidden focus-visible:ring-offset-2 focus-visible:ring-offset-background focus-visible:border-ring focus-visible:ring-[3px] bg-background shadow-[0_0_0_1px] shadow-border hover:bg-virtus-600 focus-visible:ring-blue-700 h-10 px-4 group relative flex items-center"
+//                            >
+//                                <span className="mx-[13px] transition-all duration-400 group-hover:mx-0 group-hover:mr-[26px]">
+//                                    Saiba mais
+//                                </span>
+//                                <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-0 transition-all duration-400 ease-in-out group-hover:right-4 group-hover:opacity-100">
+//                                    <svg
+//                                        xmlns="http://www.w3.org/2000/svg"
+//                                        width="18"
+//                                        height="18"
+//                                        fill="currentColor"
+//                                        viewBox="0 0 256 256"
+//                                        strokeWidth="1"
+//                                    >
+//                                        <path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z" />
+//                                    </svg>
+//                                </div>
+//                            </a>
+//                        </div>
+//                    </div>
+//                </section>
+//
+//                {/* Seção 2: Tecnologias suportadas */}
+//                <section className="w-full bg-background bg-virtus-900 py-16">
+//                    <div className="container flex flex-col items-center justify-center px-4 sm:px-6">
+//                        <div className="mb-6 flex flex-col items-center justify-center text-center">
+//                            <h2 className="font-bold text-4xl lg:tracking-tight">
+//                                Apoie seu desenvolvimento com flexibilidade e potência
+//                            </h2>
+//                            <p className="mt-4 max-w-3xl text-base text-secondary">
+//                                Com suporte para as principais tecnologias, como Java, JavaScript, PHP, Elixir, Ruby on Rails e muito mais, nossa hospedagem garante a compatibilidade e a performance que você precisa para criar projetos incríveis.
+//                            </p>
+//                        </div>
+//
+//                        <div className="flex max-w-4xl flex-wrap items-center justify-center gap-2.5">
+//                            {[
+//                                'python', 'typescript', 'javascript', 'go', 'java', 'csharp', 'rust', 'php',
+//                                'kotlin', 'elixir', 'dotnetcore', 'spring', 'react', 'nextjs', 'vuejs',
+//                                'angularjs', 'nestjs', 'laravel', 'django'
+//                            ].map((lang) => (
+//                                <div key={lang} className="flex h-18 w-18 flex-col items-center justify-center gap-2 rounded-xl border border-border-secondary px-2 py-4">
+//                                    <div className="block rounded-md duration-300 hover:opacity-100">
+//                                        <img
+//                                            alt={`${lang} Icon`}
+//                                            width={32}
+//                                            height={32}
+//                                            loading="lazy"
+//                                            decoding="async"
+//                                            className="rounded-md"
+//                                            src={`/assets/languages/${lang}.svg`}
+//                                            style={{ color: 'transparent' }}
+//                                        />
+//                                    </div>
+//                                </div>
+//                            ))}
+//                        </div>
+//
+//                        <span className="mt-6 text-center font-bold text-base text-secondary uppercase">
+//                            Confiado por milhares de desenvolvedores
+//                        </span>
+//                    </div>
+//                </section>
+//
+//                {/* Seção 3: Bots e recursos */}
+//                <section className="container relative my-24 px-4 sm:my-48 sm:px-6">
+//                    <div className="flex flex-col lg:flex-row justify-between gap-12">
+//
+//                        {/* Conteúdo textual e botão */}
+//                        <div className="flex flex-col gap-4 max-w-2xl">
+//                            <div className="flex items-center gap-3">
+//                                <div className="flex items-center gap-2 text-blue-500">
+//                                    <img src="/assets/logo.jpg" alt="Virtus Cloud Logo" width={16} height={16} />
+//                                    <span className="font-medium">Bots</span>
+//                                </div>
+//                                <span className="text-virtus-400 text-xs">|</span>
+//                                <span className="font-normal text-blue-500">Virtus Cloud</span>
+//                            </div>
+//
+//                            <div className="space-y-1">
+//                                <h2 className="font-bold text-3xl sm:text-4xl md:text-5xl leading-tight">
+//                                    Hospede seu{" "}
+//                                    <span className="text-blue-500">WhatsApp</span> bot.
+//                                </h2>
+//                                <h2 className="max-w-lg text-secondary">
+//                                    Eleve sua hospedagem de bots com a plataforma líder da América Latina. Nossa solução garante desempenho e confiabilidade inigualáveis, proporcionando hospedagem sem esforço e de alta qualidade para todas as suas necessidades de bots. Escolha-nos para obter o melhor em hospedagem de bots de ponta.
+//                                </h2>
+//                            </div>
+//
+//                            <a
+//                                href="/pt-br/bots"
+//                                className="group relative inline-flex min-w-fit items-center justify-center gap-2 overflow-hidden rounded-md text-sm font-medium whitespace-nowrap text-primary transition-all select-none hover:cursor-pointer focus:outline-hidden focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-offset-background disabled:pointer-events-none disabled:cursor-not-allowed disabled:opacity-50 bg-background shadow-[0_0_0_1px] shadow-border hover:bg-virtus-600 focus-visible:ring-blue-700 h-10 px-4"
+//                            >
+//                                <span className="mx-[13px] transition-all duration-400 group-hover:mx-0 group-hover:mr-[26px]">
+//                                    Explore mais
+//                                </span>
+//                                <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-0 transition-all duration-400 ease-in-out group-hover:right-4 group-hover:opacity-100">
+//                                    <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
+//                                        <path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Zm-40,24a8,8,0,0,0-8,8v72H48V80h72a8,8,0,0,0,0-16H48A16,16,0,0,0,32,80V208a16,16,0,0,0,16,16H176a16,16,0,0,0,16-16V136A8,8,0,0,0,184,128Z" />
+//                                    </svg>
+//                                </div>
+//                            </a>
+//
+//                            <div className="mt-6 flex flex-col gap-4 md:flex-row">
+//                                <div className="flex-1 space-y-2 rounded-md border border-virtus-700 p-4 md:max-w-60">
+//                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-blue-500">
+//                                        <path d="M101.85,191.14C97.34,201,82.29,224,40,224a8,8,0,0,1-8-8c0-42.29,23-57.34,32.86-61.85a8,8,0,0,1,6.64,14.56c-6.43,2.93-20.62,12.36-23.12,38.91,26.55-2.5,36-16.69,38.91-23.12a8,8,0,1,1,14.56,6.64Zm122-144a16,16,0,0,0-15-15c-12.58-.75-44.73.4-71.4,27.07h0L88,108.7A8,8,0,0,1,76.67,97.39l26.56-26.57A4,4,0,0,0,100.41,64H74.35A15.9,15.9,0,0,0,63,68.68L28.7,103a16,16,0,0,0,9.07,27.16l38.47,5.37,44.21,44.21,5.37,38.49a15.94,15.94,0,0,0,10.78,12.92,16.11,16.11,0,0,0,5.1.83A15.91,15.91,0,0,0,153,227.3L187.32,193A16,16,0,0,0,192,181.65V155.59a4,4,0,0,0-6.83-2.82l-26.57,26.56a8,8,0,0,1-11.71-.42,8.2,8.2,0,0,1,.6-11.1l49.27-49.27h0C223.45,91.86,224.6,59.71,223.85,47.12Z" />
+//                                    </svg>
+//                                    <div>
+//                                        <h2 className="font-semibold">Dinâmico</h2>
+//                                        <span className="text-secondary text-sm">
+//                                            Oferecemos um serviço de hospedagem de bots dinâmico e inteligente com uma ampla variedade de endereços IP públicos para garantir a operação ininterrupta do bot.
+//                                        </span>
+//                                    </div>
+//                                </div>
+//
+//                                <div className="flex-1 space-y-2 rounded-md border border-virtus-700 p-4 md:max-w-60">
+//                                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="currentColor" viewBox="0 0 256 256" className="text-blue-500">
+//                                        <path d="M128,40a96,96,0,1,0,96,96A96.11,96.11,0,0,0,128,40Zm45.66,61.66-40,40a8,8,0,0,1-11.32-11.32l40-40a8,8,0,0,1,11.32,11.32ZM96,16a8,8,0,0,1,8-8h48a8,8,0,0,1,0,16H104A8,8,0,0,1,96,16Z" />
+//                                    </svg>
+//                                    <div>
+//                                        <h2 className="font-semibold">24/7 Uptime</h2>
+//                                        <span className="text-secondary text-sm">
+//                                            Reinicie automaticamente seu projeto se ele ficar off-line devido a erros de código, graças à nossa tecnologia exclusiva de reinicialização automática.
+//                                        </span>
+//                                    </div>
+//                                </div>
+//                            </div>
+//                        </div>
+//
+//                        {/* Imagem ilustrativa */}
+//                        <div className="hidden lg:flex items-center">
+//                            <img src="/undraw/services/bots.svg" alt="Bots" width={400} height={400} />
+//                        </div>
+//                    </div>
+//                </section>
+//                <Footer />
+//            </main>
+//        </>
+//    );
+//}
+//

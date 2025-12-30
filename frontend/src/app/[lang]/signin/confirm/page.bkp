@@ -1,0 +1,18 @@
+'use client';
+import { useRouter, useSearchParams } from 'next/navigation';
+import { useEffect } from 'react';
+
+export default function RedirectToUnifiedConfirm() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const email = searchParams.get('email');
+  const username = searchParams.get('username');
+
+  useEffect(() => {
+    const mode = username ? 'signup' : 'signin';
+    const query = `?email=${encodeURIComponent(email)}${username ? `&username=${encodeURIComponent(username)}` : ''}&mode=${mode}`;
+    router.replace(`[lang]/confirm${query}`);
+  }, [email, username, router]);
+
+  return null;
+}

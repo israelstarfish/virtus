@@ -1,0 +1,201 @@
+//frontend/src/app/[lang]/page.tsx -> Home Page
+'use client';
+
+//'use client';
+//
+//import { usePathname } from 'next/navigation';
+//import Link from 'next/link';
+//import '../styles/globais.css';
+//
+//const messages = {
+//  'pt-br': {
+//    banner: 'Conheça o nosso novo serviço de analytics! →',
+//    slogan: 'sua plataforma completa',
+//    description:
+//      'Potencialize sua presença online com o poder da Virtus Cloud, sua hospedagem definitiva para bots e sites! Transforme seu sonho em realidade com segurança, privacidade e suporte premium excepcional.',
+//    plans: 'Confira nossos planos',
+//    about: 'Saiba mais',
+//  },
+//  en: {
+//    banner: 'Discover our new analytics service! →',
+//    slogan: 'your complete platform',
+//    description:
+//      'Boost your online presence with Virtus Cloud, your ultimate hosting solution for bots and websites! Make your dream real with privacy, security, and premium support.',
+//    plans: 'View our plans',
+//    about: 'Learn more',
+//  },
+//  es: {
+//    banner: '¡Conoce nuestro nuevo servicio de analytics! →',
+//    slogan: 'tu plataforma completa',
+//    description:
+//      'Impulsa tu presencia en línea con el poder de Virtus Cloud, tu solución definitiva para bots y sitios web. Haz realidad tu sueño con seguridad, privacidad y soporte premium.',
+//    plans: 'Consulta nuestros planes',
+//    about: 'Saber más',
+//  },
+//  zh: {
+//    banner: '了解我们的全新分析服务！→',
+//    slogan: '您的完整平台',
+//    description:
+//      '通过 Virtus Cloud 提升您的线上影响力，这是针对网站与机器人的终极托管方案。享受卓越支持、隐私保护与安全性能，助您梦想成真。',
+//    plans: '查看方案',
+//    about: '了解更多',
+//  },
+//};
+//
+//function getLangFromPath(pathname: string) {
+//  const segment = pathname?.split('/')[1]?.toLowerCase() || '';
+//  const supported = Object.keys(messages);
+//  return supported.includes(segment) ? segment : 'en';
+//}
+//
+//export default function Page() {
+//  const pathname = usePathname();
+//  const lang = getLangFromPath(pathname);
+//  const dict = messages[lang];
+//
+//  return (
+//    <main className="relative min-h-screen flex items-center justify-center bg-black text-white px-6 py-10 overflow-hidden">
+//      {/* Fundo visual */}
+//      <div className="absolute inset-0 bg-grid-virtus-600/[0.375] opacity-10 z-0" />
+//
+//      {/* Banner */}
+//      <div className="absolute top-6 text-sm bg-green-600 px-4 py-2 rounded-full text-black font-semibold z-10">
+//        {dict.banner}
+//      </div>
+//
+//      {/* Conteúdo central */}
+//      <div className="text-center z-10 max-w-2xl fade-in">
+//        <h1 className="text-6xl font-extrabold text-white tracking-tight sm:text-7xl md:text-8xl">
+//          Virtus Cloud
+//        </h1>
+//        <h2 className="bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-600 bg-clip-text text-transparent font-extrabold text-3xl sm:text-4xl md:text-6xl mt-2">
+//          {dict.slogan}
+//        </h2>
+//        <p className="mt-6 text-lg text-gray-300">{dict.description}</p>
+//
+//        {/* Botões */}
+//        <div className="mt-8 flex gap-4 justify-center">
+//          <Link
+//            href={`/${lang}/pricing`}
+//            className="bg-blue-600 hover:bg-blue-500 text-white font-medium px-5 py-3 rounded transition"
+//          >
+//            {dict.plans}
+//          </Link>
+//          <Link
+//            href={`/${lang}/about`}
+//            className="bg-white text-black font-medium px-5 py-3 rounded hover:bg-gray-200 transition"
+//          >
+//            {dict.about}
+//          </Link>
+//        </div>
+//      </div>
+//    </main>
+//  );
+//}
+
+//import { usePathname } from 'next/navigation';
+//import Link from 'next/link';
+//import '../styles/globais.css';
+//
+//const messages = {
+//  'pt-br': {
+//    banner: 'Conheça o nosso novo serviço de analytics! →',
+//    slogan: 'sua plataforma completa',
+//    description:
+//      'Potencialize sua presença online com o poder da Virtus Cloud, sua hospedagem definitiva para bots e sites! Transforme seu sonho em realidade com segurança, privacidade e suporte premium excepcional.',
+//    plans: 'Confira nossos planos',
+//    about: 'Saiba mais',
+//  },
+//  en: {
+//    banner: 'Discover our new analytics service! →',
+//    slogan: 'your complete platform',
+//    description:
+//      'Boost your online presence with Virtus Cloud, your ultimate hosting solution for bots and websites! Make your dream real with privacy, security, and premium support.',
+//    plans: 'View our plans',
+//    about: 'Learn more',
+//  },
+//  es: {
+//    banner: '¡Conoce nuestro nuevo servicio de analytics! →',
+//    slogan: 'tu plataforma completa',
+//    description:
+//      'Impulsa tu presencia en línea con el poder de Virtus Cloud, tu solución definitiva para bots y sitios web. Haz realidad tu sueño con seguridad, privacidad y soporte premium.',
+//    plans: 'Consulta nuestros planes',
+//    about: 'Saber más',
+//  },
+//  zh: {
+//    banner: '了解我们的全新分析服务！→',
+//    slogan: '您的完整平台',
+//    description:
+//      '通过 Virtus Cloud 提升您的线上影响力，这是针对网站与机器人的终极托管方案。享受卓越支持、隐私保护与安全性能，助您梦想成真。',
+//    plans: '查看方案',
+//    about: '了解更多',
+//  },
+//};
+//
+//function getLangFromPath(pathname: string) {
+//  const segment = pathname?.split('/')[1]?.toLowerCase() || '';
+//  const supported = Object.keys(messages);
+//  return supported.includes(segment) ? segment : 'en';
+//}
+//
+//export default function Page() {
+//  const pathname = usePathname();
+//  const lang = getLangFromPath(pathname);
+//  const dict = messages[lang];
+//
+//  return (
+//    <section
+//      id="main"
+//      className="relative h-[max(500px,calc(100dvh-80px))] max-h-[900px] overflow-hidden rounded-4xl bg-grid-virtus-600/[0.375] px-4 py-16 sm:mx-4 sm:px-6 sm:py-36"
+//    >
+//      <div className="-mt-6 flex h-full select-none flex-col items-center justify-center text-center">
+//        <div className="absolute top-4 text-sm bg-green-600 px-4 py-2 rounded-full text-black font-semibold">
+//          {dict.banner}
+//        </div>
+//
+//        <div className="max-w-2xl lg:max-w-5xl fade-in">
+//          <h1 className="font-extrabold text-5xl text-white leading-snug tracking-tight sm:text-6xl md:text-8xl">
+//            Virtus Cloud
+//          </h1>
+//          <h2 className="bg-gradient-to-r from-blue-700 via-blue-500 to-cyan-600 bg-clip-text font-extrabold text-4xl text-transparent tracking-tight sm:text-4xl md:text-6xl">
+//            {dict.slogan}
+//          </h2>
+//          <p className="my-6 font-medium text-base text-gray-300 sm:mx-auto lg:mx-0">
+//            {dict.description}
+//          </p>
+//        </div>
+//
+//        <div className="grid justify-center gap-4 py-0.5 sm:grid-cols-2">
+//          <Link
+//            href={`/${lang}/pricing`}
+//            className="group relative inline-flex items-center justify-center gap-2 rounded-md bg-blue-700 px-4 h-10 text-sm font-medium text-white hover:bg-blue-800 transition-all"
+//          >
+//            <span className="mx-[13px] transition-all duration-400 group-hover:mx-0 group-hover:mr-[26px]">
+//              {dict.plans}
+//            </span>
+//            <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-0 transition-all duration-400 ease-in-out group-hover:right-4 group-hover:opacity-100">
+//              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
+//                <path d="M221.66,133.66l-72,72a8,8,0,0,1-11.32-11.32L196.69,136H40a8,8,0,0,1,0-16H196.69L138.34,61.66a8,8,0,0,1,11.32-11.32l72,72A8,8,0,0,1,221.66,133.66Z" />
+//              </svg>
+//            </div>
+//          </Link>
+//
+//          <Link
+//            href="https://docs.virtuscloud.app"
+//            target="_blank"
+//            className="group relative inline-flex items-center justify-center gap-2 rounded-md bg-white px-4 h-10 text-sm font-medium text-black hover:bg-gray-200 shadow-md transition-all"
+//          >
+//            <span className="mx-[13px] transition-all duration-400 group-hover:mx-0 group-hover:mr-[26px]">
+//              {dict.about}
+//            </span>
+//            <div className="absolute top-1/2 right-12 -translate-y-1/2 opacity-0 transition-all duration-400 ease-in-out group-hover:right-4 group-hover:opacity-100">
+//              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor" viewBox="0 0 256 256">
+//                <path d="M224,104a8,8,0,0,1-16,0V59.32l-66.33,66.34a8,8,0,0,1-11.32-11.32L196.68,48H152a8,8,0,0,1,0-16h64a8,8,0,0,1,8,8Z" />
+//              </svg>
+//            </div>
+//          </Link>
+//        </div>
+//      </div>
+//    </section>
+//  );
+//}

@@ -1,0 +1,540 @@
+/* animations.css */
+@keyframes rotate-1{
+    0%,30%{
+        transform:none
+    }
+    50%,to{
+        transform:rotate(180deg)
+    }
+}
+
+@keyframes rotate-2{
+    0%{
+        transform:translate(20%,-20%)
+    }
+    25%{
+        transform:translate(0%)
+    }
+    50%{
+        transform:rotate(180deg)
+    }
+    75%,to{
+        transform:rotate(180deg)translate(-20%,20%)
+    }
+}
+
+@keyframes sprint{
+    0%{
+        opacity:0;
+        transform:translate(0)
+    }
+    50%{
+        opacity:1;
+        transform:translate(1.5rem)
+    }
+    to{
+        opacity:0;
+        transform:translate(3rem)
+    }
+}
+
+@property --tw-border-style{
+    syntax:"*";
+    inherits:false;
+    initial-value:solid
+}
+
+@property --tw-content{
+    syntax:"*";
+    inherits:false;
+    initial-value:""
+}
+
+@property --tw-translate-x{
+    syntax:"*";
+    inherits:false;
+    initial-value:0
+}
+
+@property --tw-translate-y{
+    syntax:"*";
+    inherits:false;
+    initial-value:0
+}
+
+@property --tw-translate-z{
+    syntax:"*";
+    inherits:false;
+    initial-value:0
+}
+
+@property --tw-scale-x{
+    syntax:"*";
+    inherits:false;
+    initial-value:1
+}
+
+@property --tw-scale-y{
+    syntax:"*";
+    inherits:false;
+    initial-value:1
+}
+
+@property --tw-scale-z{
+    syntax:"*";
+    inherits:false;
+    initial-value:1
+}
+
+@property --tw-rotate-x{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-rotate-y{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-rotate-z{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-skew-x{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-skew-y{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-space-y-reverse{
+    syntax:"*";
+    inherits:false;
+    initial-value:0
+}
+
+@property --tw-space-x-reverse{
+    syntax:"*";
+    inherits:false;
+    initial-value:0
+}
+
+@property --tw-divide-x-reverse{
+    syntax:"*";
+    inherits:false;
+    initial-value:0
+}
+
+@property --tw-divide-y-reverse{
+    syntax:"*";
+    inherits:false;
+    initial-value:0
+}
+
+@property --tw-gradient-position{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-gradient-from{
+    syntax:"<color>";
+    inherits:false;
+    initial-value:transparent
+}
+
+@property --tw-gradient-via{
+    syntax:"<color>";
+    inherits:false;
+    initial-value:transparent
+}
+
+@property --tw-gradient-to{
+    syntax:"<color>";
+    inherits:false;
+    initial-value:transparent
+}
+
+@property --tw-gradient-stops{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-gradient-via-stops{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-gradient-from-position{
+    syntax:"<length-percentage>";
+    inherits:false;
+    initial-value:0%
+}
+
+@property --tw-gradient-via-position{
+    syntax:"<length-percentage>";
+    inherits:false;
+    initial-value:50%
+}
+
+@property --tw-gradient-to-position{
+    syntax:"<length-percentage>";
+    inherits:false;
+    initial-value:100%
+}
+
+@property --tw-leading{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-font-weight{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-tracking{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-ordinal{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-slashed-zero{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-numeric-figure{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-numeric-spacing{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-numeric-fraction{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-shadow{
+    syntax:"*";
+    inherits:false;
+    initial-value:0 0 transparent
+}
+
+@property --tw-shadow-color{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-shadow-alpha{
+    syntax:"<percentage>";
+    inherits:false;
+    initial-value:100%
+}
+
+@property --tw-inset-shadow{
+    syntax:"*";
+    inherits:false;
+    initial-value:0 0 transparent
+}
+
+@property --tw-inset-shadow-color{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-inset-shadow-alpha{
+    syntax:"<percentage>";
+    inherits:false;
+    initial-value:100%
+}
+
+@property --tw-ring-color{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-ring-shadow{
+    syntax:"*";
+    inherits:false;
+    initial-value:0 0 transparent
+}
+
+@property --tw-inset-ring-color{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-inset-ring-shadow{
+    syntax:"*";
+    inherits:false;
+    initial-value:0 0 transparent
+}
+
+@property --tw-ring-inset{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-ring-offset-width{
+    syntax:"<length>";
+    inherits:false;
+    initial-value:0
+}
+
+@property --tw-ring-offset-color{
+    syntax:"*";
+    inherits:false;
+    initial-value:#fff
+}
+
+@property --tw-ring-offset-shadow{
+    syntax:"*";
+    inherits:false;
+    initial-value:0 0 transparent
+}
+
+@property --tw-outline-style{
+    syntax:"*";
+    inherits:false;
+    initial-value:solid
+}
+
+@property --tw-blur{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-brightness{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-contrast{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-grayscale{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-hue-rotate{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-invert{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-opacity{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-saturate{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-sepia{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-drop-shadow{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-drop-shadow-color{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-drop-shadow-alpha{
+    syntax:"<percentage>";
+    inherits:false;
+    initial-value:100%
+}
+
+@property --tw-drop-shadow-size{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-backdrop-blur{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-backdrop-brightness{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-backdrop-contrast{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-backdrop-grayscale{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-backdrop-hue-rotate{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-backdrop-invert{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-backdrop-opacity{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-backdrop-saturate{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-backdrop-sepia{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-duration{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-ease{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-text-shadow-color{
+    syntax:"*";
+    inherits:false
+}
+
+@property --tw-text-shadow-alpha{
+    syntax:"<percentage>";
+    inherits:false;
+    initial-value:100%
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg)
+    }
+}
+
+@keyframes ping{
+    75%,to{
+        opacity:0;
+        transform:scale(2)
+    }
+}
+
+@keyframes pulse{
+    50%{
+        opacity:.5
+    }
+}
+
+@keyframes accordion-down{
+    0%{
+        height:0
+    }
+    to{
+        height:var(--radix-accordion-content-height)
+    }
+}
+
+@keyframes accordion-up{
+    0%{
+        height:var(--radix-accordion-content-height)
+    }
+    to{
+        height:0
+    }
+}
+
+@keyframes gradient{
+    to{
+        background-position:var(--bg-size,300%)0
+    }
+}
+
+@keyframes caret-blink{
+    0%,70%,to{
+        opacity:1
+    }
+    20%,50%{
+        opacity:0
+    }
+}
+
+@keyframes progress{
+    0%{
+        left:-60%
+    }
+    to{
+        left:110%
+    }
+}
+
+@keyframes shimmer{
+    to{
+        transform:translate(200%)
+    }
+}
+
+@keyframes shine{
+    0%{
+        opacity:0;
+        left:-200%
+    }
+    to{
+        opacity:1;
+        left:150%
+    }
+}
+
+@keyframes collapsible-animate-down{
+    0%{
+        height:0
+    }
+    to{
+        height:var(--radix-collapsible-content-height)
+    }
+}
+
+@keyframes collapsible-animate-up{
+    0%{
+        height:var(--radix-collapsible-content-height)
+    }
+    to{
+        height:0
+    }
+}

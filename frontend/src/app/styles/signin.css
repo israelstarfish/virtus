@@ -1,0 +1,39 @@
+/* src/app/styles/globals.css */
+
+/* ✨ Animação suave ao entrar na tela */
+.signin-container {
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* 🎞 Efeito de fade com leve subida */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* 🔵 Estilização ao focar no input */
+input:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px #3b82f6; /* Azul suave ao focar */
+}
+
+/* 🚫 Botões desabilitados ficam suaves e inativos */
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* 📱 Ajuste responsivo para telas pequenas */
+@media (max-width: 480px) {
+  .signin-container {
+    padding: 1rem;
+    border-radius: 0.5rem;
+  }
+}
+

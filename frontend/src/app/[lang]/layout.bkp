@@ -1,0 +1,678 @@
+//frontend/src/app/[lang]/layout.tsx
+
+import type { Metadata } from 'next';
+import '../styles/globais.css';
+
+export const titles = {
+  'pt-br': {
+    title: 'Virtus Cloud | Hospedagem Cloud para Bots, Sites, APIs e DBs. Robusta e Escalável',
+    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+  },
+  en: {
+    title: 'Virtus Cloud | Cloud Hosting for Bots, Sites, APIs and DBs. Robust and Scalable',
+    description: 'Create your account with your email and access securely.',
+  },
+  es: {
+    title: 'Virtus Cloud | Hosting en la Nube para Bots, Sitios, APIs y Bases de Datos. Robusto y Escalable',
+    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+  },
+  zh: {
+    title: 'Virtus Cloud | 适用于机器人、网站、API 和数据库的云托管。强大且可扩展',
+    description: '使用您的电子邮件创建账户并安全访问。',
+  },
+};
+
+export async function generateMetadata({
+  params: paramsPromise,
+}: {
+  params: Promise<{ lang: string }>;
+}): Promise<Metadata> {
+  const { lang } = await paramsPromise;
+  const dict = titles[lang] || titles.en;
+
+  return {
+    title: dict.title,
+    description: dict.description,
+  };
+}
+
+export default async function RootLayout({
+  children,
+  params: paramsPromise,
+}: {
+  children: React.ReactNode;
+  params: Promise<{ lang: string }>;
+}) {
+  const { lang } = await paramsPromise;
+
+  return (
+    <html className="notranslate" lang={lang} translate="no">
+      <body className="min-h-screen h-full flex flex-col bg-login-pattern bg-repeat bg-black text-white">
+        {/* Layout persistente */}
+        <div className="flex-1 flex items-center justify-center bg-grid-virtus-600/[0.375]">
+          {/* Conteúdo com transição */}
+          <div className="w-full transition-opacity duration-300 ease-in-out opacity-100">
+            {children}
+          </div>
+        </div>
+      </body>
+    </html>
+  );
+}
+
+//frontend/src/app/[lang]/layout.tsx
+
+//import type { Metadata } from 'next';
+//import '../styles/globais.css';
+//import { SessionProvider } from '@/context/SessionContext';
+//
+//export const titles = {
+//  'pt-br': {
+//    title: 'Virtus Cloud | Hospedagem Cloud para Bots, Sites, APIs e DBs. Robusta e Escalável',
+//    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+//  },
+//  en: {
+//    title: 'Virtus Cloud | Cloud Hosting for Bots, Sites, APIs and DBs. Robust and Scalable',
+//    description: 'Create your account with your email and access securely.',
+//  },
+//  es: {
+//    title: 'Virtus Cloud | Hosting en la Nube para Bots, Sitios, APIs y Bases de Datos. Robusto y Escalable',
+//    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+//  },
+//  zh: {
+//    title: 'Virtus Cloud | 适用于机器人、网站、API 和数据库的云托管。强大且可扩展',
+//    description: '使用您的电子邮件创建账户并安全访问。',
+//  },
+//};
+//
+//export async function generateMetadata({
+//  params: paramsPromise,
+//}: {
+//  params: Promise<{ lang: string }>;
+//}): Promise<Metadata> {
+//  const { lang } = await paramsPromise;
+//  const dict = titles[lang] || titles.en;
+//
+//  return {
+//    title: dict.title,
+//    description: dict.description,
+//  };
+//}
+//
+//export default async function RootLayout({
+//  children,
+//  params: paramsPromise,
+//}: {
+//  children: React.ReactNode;
+//  params: Promise<{ lang: string }>;
+//}) {
+//  const { lang } = await paramsPromise;
+//
+//  return (
+//    <html className="notranslate" lang={lang} translate="no">
+//      <body className="min-h-screen h-full flex flex-col bg-login-pattern bg-repeat bg-black text-white">
+//        <SessionProvider>
+//        {/* Layout persistente */}
+//        <div className="flex-1 flex items-center justify-center bg-grid-virtus-600/[0.375]">
+//          {/* Conteúdo com transição */}
+//          <div className="w-full transition-opacity duration-300 ease-in-out opacity-100">
+//            {children}
+//          </div>
+//        </div>
+//        </SessionProvider>
+//      </body>
+//    </html>
+//  );
+//}
+
+//frontend/src/app/[lang]/layout.tsx
+
+//import type { Metadata } from 'next';
+//import '../styles/globais.css';
+//
+//export const titles = {
+//  'pt-br': {
+//    title: 'Virtus Cloud | Hospedagem Cloud para Bots, Sites, APIs e DBs. Robusta e Escalável',
+//    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+//  },
+//  en: {
+//    title: 'Virtus Cloud | Cloud Hosting for Bots, Sites, APIs and DBs. Robust and Scalable',
+//    description: 'Create your account with your email and access securely.',
+//  },
+//  es: {
+//    title: 'Virtus Cloud | Hosting en la Nube para Bots, Sitios, APIs y Bases de Datos. Robusto y Escalable',
+//    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+//  },
+//  zh: {
+//    title: 'Virtus Cloud | 适用于机器人、网站、API 和数据库的云托管。强大且可扩展',
+//    description: '使用您的电子邮件创建账户并安全访问。',
+//  },
+//};
+//
+//export async function generateMetadata({
+//  params: paramsPromise,
+//}: {
+//  params: Promise<{ lang: string }>;
+//}): Promise<Metadata> {
+//  const { lang } = await paramsPromise;
+//  const dict = titles[lang] || titles.en;
+//
+//  return {
+//    title: dict.title,
+//    description: dict.description,
+//  };
+//}
+//
+//export default async function RootLayout({
+//  children,
+//  params: paramsPromise,
+//}: {
+//  children: React.ReactNode;
+//  params: Promise<{ lang: string }>;
+//}) {
+//  const { lang } = await paramsPromise;
+//
+//  return (
+//    <html className="notranslate" lang={lang} translate="no">
+//      <body className="min-h-screen h-full flex flex-col bg-login-pattern bg-repeat bg-black text-white">
+//        {/* Layout persistente */}
+//        <div className="flex-1 flex items-center justify-center bg-grid-virtus-600/[0.375]">
+//          {/* Conteúdo com transição */}
+//          <div className="w-full transition-opacity duration-300 ease-in-out opacity-100">
+//            {children}
+//          </div>
+//        </div>
+//      </body>
+//    </html>
+//  );
+//}
+
+//export default async function RootLayout({
+//  children,
+//  params: paramsPromise,
+//}: {
+//  children: React.ReactNode;
+//  params: Promise<{ lang: string }>;
+//}) {
+//  const { lang } = await paramsPromise;
+//
+//  return (
+//    <html lang={lang} className="h-full">
+//      <body className="min-h-screen h-full flex flex-col bg-login-pattern bg-repeat bg-black text-white">
+//        {/* Layout persistente */}
+//        <div className="flex-1 flex items-center justify-center bg-grid-virtus-600/[0.375]">
+//          {/* Conteúdo com transição */}
+//          <div className="w-full transition-opacity duration-300 ease-in-out opacity-100">
+//            {children}
+//          </div>
+//        </div>
+//      </body>
+//    </html>
+//  );
+//}
+
+
+//import type { Metadata } from 'next';
+//import '../styles/globais.css';
+//
+//export const titles = {
+//  'pt-br': {
+//    title: 'Virtus Cloud | Hospedagem Cloud para Bots, Sites, APIs e DBs. Robusta e Escalável',
+//    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+//  },
+//  en: {
+//    title: 'Virtus Cloud | Cloud Hosting for Bots, Sites, APIs and DBs. Robust and Scalable',
+//    description: 'Create your account with your email and access securely.',
+//  },
+//  es: {
+//    title: 'Virtus Cloud | Hosting en la Nube para Bots, Sitios, APIs y Bases de Datos. Robusto y Escalable',
+//    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+//  },
+//  zh: {
+//    title: 'Virtus Cloud | 适用于机器人、网站、API 和数据库的云托管。强大且可扩展',
+//    description: '使用您的电子邮件创建账户并安全访问。',
+//  },
+//};
+//
+//export async function generateMetadata({
+//  params: paramsPromise,
+//}: {
+//  params: Promise<{ lang: string }>;
+//}): Promise<Metadata> {
+//  const { lang } = await paramsPromise;
+//  const dict = titles[lang] || titles.en;
+//
+//  return {
+//    title: dict.title,
+//    description: dict.description,
+//  };
+//}
+//
+//export default async function RootLayout({
+//  children,
+//  params: paramsPromise,
+//}: {
+//  children: React.ReactNode;
+//  params: Promise<{ lang: string }>;
+//}) {
+//  const { lang } = await paramsPromise;
+//
+//  return (
+//    <html lang={lang} className="h-full">
+//      <body
+//        className="
+//          min-h-screen
+//          h-full
+//          flex
+//          flex-col
+//          bg-login-pattern
+//          bg-repeat
+//          bg-black
+//          text-white
+//      "
+//      >
+//        {children}
+//      </body>
+//    </html>
+//  );
+//}
+
+// src/app/[lang]/layout.tsx
+
+//import type { Metadata } from 'next';
+//import '../styles/globais.css';
+//
+//export const titles = {
+//  'pt-br': {
+//    title: 'Virtus Cloud | Hospedagem Cloud para Bots, Sites, APIs e DBs. Robusta e Escalável',
+//    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+//  },
+//  en: {
+//    title: 'Virtus Cloud | Cloud Hosting for Bots, Sites, APIs and DBs. Robust and Scalable',
+//    description: 'Create your account with your email and access securely.',
+//  },
+//  es: {
+//    title: 'Virtus Cloud | Hosting en la Nube para Bots, Sitios, APIs y Bases de Datos. Robusto y Escalable',
+//    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+//  },
+//  zh: {
+//    title: 'Virtus Cloud | 适用于机器人、网站、API 和数据库的云托管。强大且可扩展',
+//    description: '使用您的电子邮件创建账户并安全访问。',
+//  },
+//};
+//
+//export async function generateMetadata({
+//  params: paramsPromise,
+//}: {
+//  params: Promise<{ lang: string }>;
+//}): Promise<Metadata> {
+//  const { lang } = await paramsPromise;
+//  const dict = titles[lang] || titles.en;
+//
+//  return {
+//    title: dict.title,
+//    description: dict.description,
+//  };
+//}
+//
+//export default async function RootLayout({
+//  children,
+//  params: paramsPromise,
+//}: {
+//  children: React.ReactNode;
+//  params: Promise<{ lang: string }>;
+//}) {
+//  const { lang } = await paramsPromise;
+//
+//  return (
+//    <html lang={lang} className="h-full">
+//      <body
+//        className="
+//          min-h-screen
+//          h-full
+//          flex
+//          flex-col
+//          bg-login-pattern
+//          bg-repeat
+//          bg-black
+//          text-white
+//      "
+//      >
+//        {children}
+//      </body>
+//    </html>
+//  );
+//}
+
+
+// src/app/[lang]/layout.tsx
+
+//import type { Metadata } from 'next';
+//import '../styles/globais.css';
+//
+//export const titles = {
+//  'pt-br': {
+//    title: 'Virtus Cloud | Hospedagem Cloud para Bots, Sites, APIs e DBs. Robusta e Escalável',
+//    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+//  },
+//  en: {
+//    title: 'Virtus Cloud | Cloud Hosting for Bots, Sites, APIs and DBs. Robust and Scalable',
+//    description: 'Create your account with your email and access securely.',
+//  },
+//  es: {
+//    title: 'Virtus Cloud | Hosting en la Nube para Bots, Sitios, APIs y Bases de Datos. Robusto y Escalable',
+//    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+//  },
+//  zh: {
+//    title: 'Virtus Cloud | 适用于机器人、网站、API 和数据库的云托管。强大且可扩展',
+//    description: '使用您的电子邮件创建账户并安全访问。',
+//  },
+//};
+//
+//export async function generateMetadata({
+//  params: paramsPromise,
+//}: {
+//  params: Promise<{ lang: string }>;
+//}): Promise<Metadata> {
+//  const { lang } = await paramsPromise;
+//  const dict = titles[lang] || titles.en;
+//
+//  return {
+//    title: dict.title,
+//    description: dict.description,
+//  };
+//}
+//
+//export default async function RootLayout({
+//  children,
+//  params: paramsPromise,
+//}: {
+//  children: React.ReactNode;
+//  params: Promise<{ lang: string }>;
+//}) {
+//  const { lang } = await paramsPromise;
+//
+//  return (
+//    <html lang={lang} className="h-full">
+//      <body
+//        className="
+//          h-full
+//          min-h-screen
+//          grid
+//          place-items-center
+//          bg-login-pattern
+//          bg-repeat
+//          bg-black
+//          text-white
+//        "
+//      >
+//        {children}
+//      </body>
+//    </html>
+//  );
+//}
+
+//const titles = {
+//  'pt-br': {
+//    title: 'Seu website e projeto online - Virtus Cloud',
+//    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+//  },
+//  en: {
+//    title: 'Your website and online project - Virtus Cloud',
+//    description: 'Create your account with email and access securely.',
+//  },
+//  es: {
+//    title: 'Tu sitio web y proyecto en línea - Virtus Cloud',
+//    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+//  },
+//  zh: {
+//    title: '您的网站与线上项目 - Virtus Cloud',
+//    description: '使用电子邮件创建账户，安全访问您的平台。',
+//  },
+//};
+
+//import type { Metadata } from 'next';
+//import '../styles/globais.css';
+//
+//const titles = {
+//  'pt-br': {
+//    title: 'Seu website e projeto online - Virtus Cloud',
+//    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+//  },
+//  en: {
+//    title: 'Your website and online project - Virtus Cloud',
+//    description: 'Create your account with email and access securely.',
+//  },
+//  es: {
+//    title: 'Tu sitio web y proyecto en línea - Virtus Cloud',
+//    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+//  },
+//  zh: {
+//    title: '您的网站与线上项目 - Virtus Cloud',
+//    description: '使用电子邮件创建账户，安全访问您的平台。',
+//  },
+//};
+//
+//export async function generateMetadata({
+//  params: paramsPromise,
+//}: {
+//  params: Promise<{ lang: string }>;
+//}): Promise<Metadata> {
+//  const { lang } = await paramsPromise;
+//  const dict = titles[lang] || titles.en;
+//
+//  return {
+//    title: dict.title,
+//    description: dict.description,
+//  };
+//}
+//
+//export default async function RootLayout({
+//  children,
+//  params: paramsPromise,
+//}: {
+//  children: React.ReactNode;
+//  params: Promise<{ lang: string }>;
+//}) {
+//  const { lang } = await paramsPromise;
+//
+//  return (
+//    <html lang={lang} className="h-full">
+//      <body
+//        className="
+//          h-full
+//          min-h-screen
+//          grid
+//          place-items-center
+//          bg-login-pattern
+//          bg-repeat
+//          bg-black
+//          text-white
+//        "
+//      >
+//        <main className="w-full max-w-md px-4">{children}</main>
+//      </body>
+//    </html>
+//  );
+//}
+
+//import type { Metadata } from 'next';
+//import '../styles/globais.css';
+//
+//const titles = {
+//  'pt-br': {
+//    title: 'Seu website e projeto online - Virtus Cloud',
+//    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+//  },
+//  en: {
+//    title: 'Your website and online project - Virtus Cloud',
+//    description: 'Create your account with email and access securely.',
+//  },
+//  es: {
+//    title: 'Tu sitio web y proyecto en línea - Virtus Cloud',
+//    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+//  },
+//  zh: {
+//    title: '您的网站与线上项目 - Virtus Cloud',
+//    description: '使用电子邮件创建账户，安全访问您的平台。',
+//  },
+//};
+//
+//export async function generateMetadata({
+//  params: paramsPromise,
+//}: {
+//  params: Promise<{ lang: string }>;
+//}): Promise<Metadata> {
+//  const { lang } = await paramsPromise;
+//  const dict = titles[lang] || titles.en;
+//
+//  return {
+//    title: dict.title,
+//    description: dict.description,
+//  };
+//}
+//
+//export default async function RootLayout({
+//  children,
+//  params: paramsPromise,
+//}: {
+//  children: React.ReactNode;
+//  params: Promise<{ lang: string }>;
+//}) {
+//  const { lang } = await paramsPromise;
+//
+//  return (
+//    <html lang={lang} className="h-full">
+//      <body className="h-full min-h-screen bg-login-pattern bg-repeat bg-black text-white flex items-center justify-center">
+//        <main className="w-full max-w-md px-4">{children}</main>
+//      </body>
+//    </html>
+//  );
+//}
+
+// src/app/[lang]/layout.tsx
+//import type { Metadata } from 'next';
+//import '../styles/globais.css';
+//
+//const titles = {
+//  'pt-br': {
+//    title: 'Seu website e projeto online - Virtus Cloud',
+//    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+//  },
+//  en: {
+//    title: 'Your website and online project - Virtus Cloud',
+//    description: 'Create your account with email and access securely.',
+//  },
+//  es: {
+//    title: 'Tu sitio web y proyecto en línea - Virtus Cloud',
+//    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+//  },
+//  zh: {
+//    title: '您的网站与线上项目 - Virtus Cloud',
+//    description: '使用电子邮件创建账户，安全访问您的平台。',
+//  },
+//};
+//
+//export async function generateMetadata({
+//  params: paramsPromise,
+//}: {
+//  params: Promise<{ lang: string }>;
+//}): Promise<Metadata> {
+//  const { lang } = await paramsPromise;
+//  const dict = titles[lang] || titles.en;
+//
+//  return {
+//    title: dict.title,
+//    description: dict.description,
+//  };
+//}
+//
+//export default async function RootLayout({
+//  children,
+//  params: paramsPromise,
+//}: {
+//  children: React.ReactNode;
+//  params: Promise<{ lang: string }>;
+//}) {
+//  const { lang } = await paramsPromise;
+//
+//  return (
+//    <html lang={lang} className="h-full">
+//      <body
+//        className="
+//          h-full
+//          min-h-screen
+//          bg-[url('/img/layout.png')]
+//          bg-repeat
+//          bg-black
+//          text-white
+//          flex items-center justify-center
+//        "
+//      >
+//        <div className="w-full max-w-md px-4">{children}</div>
+//      </body>
+//    </html>
+//  );
+//}
+
+//import type { Metadata } from 'next';
+//
+//const titles = {
+//  'pt-br': {
+//    title: 'Seu website e projeto online - Virtus Cloud',
+//    description: 'Crie sua conta com seu e-mail e acesse com segurança.',
+//  },
+//  en: {
+//    title: 'Your website and online project - Virtus Cloud',
+//    description: 'Create your account with email and access securely.',
+//  },
+//  es: {
+//    title: 'Tu sitio web y proyecto en línea - Virtus Cloud',
+//    description: 'Crea tu cuenta con tu correo y accede con seguridad.',
+//  },
+//  zh: {
+//    title: '您的网站与线上项目 - Virtus Cloud',
+//    description: '使用电子邮件创建账户，安全访问您的平台。',
+//  },
+//};
+//
+//export async function generateMetadata({
+//  params: paramsPromise,
+//}: {
+//  params: Promise<{ lang: string }>;
+//}): Promise<Metadata> {
+//  const { lang } = await paramsPromise;
+//  const dict = titles[lang] || titles.en;
+//
+//  return {
+//    title: dict.title,
+//    description: dict.description,
+//  };
+//}
+//
+//export default async function RootLayout({
+//  children,
+//  params: paramsPromise,
+//}: {
+//  children: React.ReactNode;
+//  params: Promise<{ lang: string }>;
+//}) {
+//  const { lang } = await paramsPromise;
+//
+//  return (
+//    <html lang={lang}>
+//      <body
+//        className="
+//          min-h-screen
+//          bg-[url('/img/layout.png')]
+//          bg-repeat
+//          bg-black
+//          text-white
+//          flex items-center justify-center
+//        "
+//      >
+//        {children}
+//      </body>
+//    </html>
+//  );
+//}

@@ -1,0 +1,124 @@
+//frontend/src/app/page.jsx
+
+import { redirect } from 'next/navigation'
+import { headers } from 'next/headers'
+
+const supportedLangs = ['pt-br', 'en', 'es', 'zh']
+
+// 🔍 Detecta o idioma preferido do usuário com base no header
+export default async function Page() {
+  const acceptLang = (await headers()).get('accept-language') || ''
+  const preferred = acceptLang
+    .split(',')
+    .map(lang => lang.split(';')[0].toLowerCase())
+
+  // ✅ Verifica se algum dos idiomas preferidos é suportado
+  const matched = preferred.find(lang =>
+    supportedLangs.includes(lang)
+  )
+
+  const lang = matched || 'en' // 🌐 Fallback para inglês se não encontrar
+
+  // 🔁 Redireciona para a versão localizada da página
+  redirect(`/${lang}/`)
+}
+
+// src/app/page.jsx
+//import { cookies, headers } from 'next/headers';
+//import { redirect } from 'next/navigation';
+//
+//const supportedLangs = ['pt-br', 'en', 'es', 'zh'];
+//
+//export default function Page() {
+//  // 🍪 Verifica se o usuário já escolheu um idioma
+//  const cookieStore = cookies();
+//  const cookieLang = cookieStore.get('preferredLang')?.value;
+//
+//  // 🌐 Detecta idioma preferido do navegador
+//  const headerList = headers();
+//  const acceptLang = headerList.get('accept-language') || '';
+//  const preferred = acceptLang
+//    .split(',')
+//    .map(lang => lang.split(';')[0].toLowerCase());
+//
+//  const matched = preferred.find(lang => supportedLangs.includes(lang));
+//
+//  // 🧠 Decide o idioma final: cookie > navegador > fallback
+//  const lang = supportedLangs.includes(cookieLang) ? cookieLang : matched || 'en';
+//
+//  // 🔁 Redireciona para a rota localizada
+//  redirect(`/${lang}/`);
+//}
+
+//import { redirect } from 'next/navigation';
+//import { headers } from 'next/headers';
+//
+//const supportedLangs = ['pt-br', 'en', 'es', 'zh'];
+//
+//// 🔍 Detecta o idioma preferido do usuário com base no header
+//async function detectLang() {
+//  const headerList = await headers();
+//  const acceptLang = headerList.get('accept-language') || '';
+//
+//  const preferred = acceptLang
+//    .split(',')
+//    .map(lang => lang.split(';')[0].toLowerCase());
+//
+//  const matched = preferred.find(lang =>
+//    supportedLangs.includes(lang)
+//  );
+//
+//  return matched || 'en'; // 🌐 Fallback para inglês se não encontrar
+//}
+//
+//// 🔁 Redireciona para a versão localizada da página
+//export default async function Page() {
+//  const lang = await detectLang();
+//  redirect(`/${lang}/`); // ou /${lang}/
+//}
+
+//import { redirect } from 'next/navigation'
+//import { headers } from 'next/headers'
+//
+//const supportedLangs = ['pt-br', 'en', 'es', 'zh']
+//
+//// 🔍 Detecta o idioma preferido do usuário com base no header
+//export default async function Page() {
+//  const acceptLang = (await headers()).get('accept-language') || ''
+//  const preferred = acceptLang
+//    .split(',')
+//    .map(lang => lang.split(';')[0].toLowerCase())
+//
+//  // ✅ Verifica se algum dos idiomas preferidos é suportado
+//  const matched = preferred.find(lang =>
+//    supportedLangs.includes(lang)
+//  )
+//
+//  const lang = matched || 'en' // 🌐 Fallback para inglês se não encontrar
+//
+//  // 🔁 Redireciona para a versão localizada da página
+//  redirect(`/${lang}/`)
+//}
+
+//import { redirect } from 'next/navigation'
+//import { headers } from 'next/headers'
+//
+//const supportedLangs = ['pt-br', 'en', 'es', 'zh']
+//
+//function detectLang() {
+//  const acceptLang = headers().get('accept-language') || ''
+//  const preferred = acceptLang
+//    .split(',')
+//    .map(lang => lang.split(';')[0].toLowerCase())
+//
+//  const matched = preferred.find(lang =>
+//    supportedLangs.includes(lang)
+//  )
+//
+//  return matched || 'en' // fallback se não encontrar
+//}
+//
+//export default function Page() {
+//  const lang = detectLang()
+//  redirect(`/${lang}/`) // ou /${lang}/
+//}
