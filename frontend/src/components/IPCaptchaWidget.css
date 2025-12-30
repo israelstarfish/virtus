@@ -1,0 +1,22 @@
+#ip-captcha-widget {
+  display: block;
+  position: fixed;
+  bottom: 10px;
+  right: 10px;
+  background: #f0f0f0;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 18px;
+  font-family: sans-serif;
+}
+
+.loading-dots {
+  animation: pulse 1s infinite;
+  color: green;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.3; }
+  50% { opacity: 1; }
+  100% { opacity: 0.3; }
+}

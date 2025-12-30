@@ -1,0 +1,3 @@
+// components/upgrade/index.ts
+
+export { default as UpgradeButton } from "./UpgradeButton";
