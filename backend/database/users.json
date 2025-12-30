@@ -1,0 +1,41 @@
+{
+    "admin": {
+        "id": 1,
+        "name": "Admin",
+        "username": "admin",
+        "email": "admin@virtuscloud.com",
+        "plan": "premium",
+        "role": "admin",
+        "containers": null,
+        "last_activity": "",
+        "status": "",
+        "active": false,
+        "created_at": "0001-01-01T00:00:00Z"
+    },
+    "israelmacyel": {
+        "id": 1,
+        "name": "",
+        "username": "israelmacyel",
+        "email": "israelmacyel.contato@gmail.com",
+        "plan": "pro",
+        "role": "user",
+        "containers": null,
+        "last_activity": "",
+        "status": "",
+        "active": false,
+        "created_at": "2025-09-14T22:52:03.3342913-03:00"
+    },
+    "ssnappllee": {
+        "id": 1,
+        "name": "",
+        "username": "ssnappllee",
+        "email": "teste@teste.teste",
+        "plan": "test",
+        "role": "user",
+        "containers": null,
+        "last_activity": "",
+        "status": "",
+        "active": false,
+        "created_at": "2025-09-09T22:24:22.4404298-03:00"
+    }
+}
