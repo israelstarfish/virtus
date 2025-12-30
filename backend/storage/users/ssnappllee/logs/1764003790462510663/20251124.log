@@ -1,0 +1,15 @@
+[2025-11-24 14:03:10] 🚀 Iniciando deploy da aplicação
+[2025-11-24 14:03:10] 📦 ZIP extraído com sucesso
+[2025-11-24 14:03:10] 🚧 Flag 'incomplete.flag' criado para controle de deploy
+[2025-11-24 14:03:10] 📁 Entry point detectado: index.js
+[2025-11-24 14:03:10] 🧠 Runtime detectado: node
+[2025-11-24 14:03:10] 🔗 Symlink do runtime criado com sucesso
+[2025-11-24 14:03:10] 📝 Arquivo config.json gerado
+[2025-11-24 14:03:10] 🔗 Symlink 'current-app' atualizado em storage/users/ssnappllee/current-app
+[2025-11-24 14:03:10] 📄 Dockerfile gerado com sucesso
+[2025-11-24 14:03:10] ✅ Deploy concluído com sucesso
+[2025-11-24 14:03:10] ✅ Flag 'incomplete.flag' removido após deploy
+[2025-11-24 14:03:10] 🔨 Tentando construir imagem Docker...
+[2025-11-24 14:03:11] ✅ Imagem Docker criada com sucesso
+[2025-11-24 14:03:12] 🐳 Container Docker criado com sucesso
+[2025-11-24 14:03:12] 🧹 Pasta da aplicação removida após deploy

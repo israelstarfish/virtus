@@ -1,0 +1,98 @@
+// 🔓 ROTAS PÚBLICAS
+// 
+// -> Arquivos de página:
+// 
+// frontend/src/app/[lang]/enterprise/page.jsx
+// frontend/src/app/[lang]/bots/page.jsx
+// frontend/src/app/[lang]/sites/page.jsx
+// frontend/src/app/[lang]/blobs/page.jsx
+// frontend/src/app/[lang]/analytics/page.jsx
+// frontend/src/app/[lang]/sac/page.jsx
+// frontend/src/app/[lang]/report-abuse/page.jsx
+// frontend/src/app/[lang]/about/page.jsx
+// 
+// 
+// -> Mensagens centralizadas:
+// 
+// frontend/src/app/[lang]/messages/enterprise.js
+// frontend/src/app/[lang]/messages/bots.js
+// frontend/src/app/[lang]/messages/sites.js
+// frontend/src/app/[lang]/messages/blobs.js
+// frontend/src/app/[lang]/messages/analytics.js
+// frontend/src/app/[lang]/messages/sac.js
+// frontend/src/app/[lang]/messages/report-abuse.js
+// frontend/src/app/[lang]/messages/about.js
+// 
+// 
+// 
+// 🔐 ROTAS AUTENTICADAS / DASHBOARD
+// 
+// -> Arquivos de página:
+// 
+// frontend/src/app/[lang]/dashboard/page.jsx
+// frontend/src/app/[lang]/dashboard/databases/page.jsx
+// frontend/src/app/[lang]/dashboard/snapshots/page.jsx
+// frontend/src/app/[lang]/dashboard/blobs/page.jsx
+// frontend/src/app/[lang]/dashboard/accounts/page.jsx
+// frontend/src/app/[lang]/dashboard/accounts/security/page.jsx
+// frontend/src/app/[lang]/dashboard/accounts/connections/page.jsx
+// frontend/src/app/[lang]/dashboard/accounts/invoices/page.jsx
+// frontend/src/app/[lang]/dashboard/accounts/blobs/page.jsx
+// frontend/src/app/[lang]/dashboard/accounts/redeem/page.jsx
+// frontend/src/app/[lang]/dashboard/support/page.jsx
+// 
+// 
+// ->Mensagens centralizadas:
+//
+// frontend/src/app/[lang]/messages/dashboard.js
+// frontend/src/app/[lang]/messages/dashboard/databases.js
+// frontend/src/app/[lang]/messages/dashboard/snapshots.js
+// frontend/src/app/[lang]/messages/dashboard/blobs.js
+// frontend/src/app/[lang]/messages/dashboard/accounts.js
+// frontend/src/app/[lang]/messages/dashboard/accounts/security.js
+// frontend/src/app/[lang]/messages/dashboard/accounts/connections.js
+// frontend/src/app/[lang]/messages/dashboard/accounts/invoices.js
+// frontend/src/app/[lang]/messages/dashboard/accounts/blobs.js
+// frontend/src/app/[lang]/messages/dashboard/accounts/redeem.js
+// frontend/src/app/[lang]/messages/dashboard/support.js
+// 
+// 
+// 💳 ROTAS AUTENTICADAS / RENOVAÇÃO-UPGRADE
+// 
+// -> Arquivos de página:
+// 
+// frontend/src/app/[lang]/pricing/page.jsx
+// frontend/src/app/[lang]/pay/page.jsx
+// 
+// Mensagens centralizadas:
+// frontend/src/app/[lang]/messages/pricing.js
+// frontend/src/app/[lang]/messages/pay.js
+// 
+// 
+// Se quiser, posso começar a recriar os arquivos page.jsx com base nessa estrutura e incluir os imports corretos dos arquivos de mensagens. Me diga por qual página você 
+
+
+
+// ENDEREÇOS DE STORAGE PARA USUÁRIOS
+
+// -> Aplicações
+
+//storage/users/{username}/{plan}/apps/{app.ID}
+
+// -> Logs
+
+//storage/users/{username}/logs/
+
+// -> Plano do usuário
+
+//storage/users/{username}/{plan}/
+
+// -> Snapshots / Backups
+
+//storage/users/{username}/{plan}/snapshots/
+
+// -> Uploads -> Sem uso no momento, aparentemente estou excluindo a necessidade destas pastas //
+
+//storage/users/{username}/uploads/
+
+//storage/users/{username}/{plan}/uploads/
