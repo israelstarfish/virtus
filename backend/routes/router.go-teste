@@ -1,0 +1,44 @@
+package routes
+
+import (
+	"net/http"
+
+	"virtuscloud/backend/middleware"
+	"virtuscloud/backend/utils"
+
+	"github.com/go-chi/chi/v5"
+	"github.com/go-chi/chi/v5/middleware"
+)
+
+func SetupRouter() http.Handler {
+	r := chi.NewRouter()
+
+	// Middlewares globais
+	r.Use(middleware.Recoverer)
+	r.Use(utils.LoggerMiddleware)
+	r.Use(utils.RateLimitMiddleware)
+
+	// Rotas públicas
+	r.Get("/api/health", HealthCheck)
+	r.Post("/send-code", SendCodeHandler)
+	r.Post("/api/verify", VerifyCodeHandler)
+
+	// Rotas protegidas
+	r.Group(func(r chi.Router) {
+		r.Use(utils.AuthMiddleware)
+
+		r.Post("/api/containers/create", CreateContainerHandler)
+		r.Get("/api/containers/list", ListContainersHandler)
+		// ... outras rotas protegidas
+	})
+
+	// Rotas com escopo
+	r.Group(func(r chi.Router) {
+		r.Use(utils.AuthMiddleware)
+		r.Use(middleware.RequireAccess("admin"))
+
+		r.Get("/api/admin/clients", AdminClientsHandler)
+	})
+
+	return r
+}
